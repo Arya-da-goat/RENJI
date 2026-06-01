@@ -174,7 +174,7 @@ const registeredNames = new Set();
         
         if (guildId) {
             
-            logger.info(`Preparing to register ${totalCommandsWithSubs} commands for guild ${guildId}`);
+            logger.info(`Preparing to register ${totalCommandsWithSubs} commands for guild ${guildId} (guild-specific)`);
             
             logger.info('Validating commands before registration...');
             
@@ -255,7 +255,7 @@ const registeredNames = new Set();
             }
             
             if (process.env.NODE_ENV !== 'production') {
-                logger.info(`Registering ${totalCommandsWithSubs} commands for guild ${guild.name} (${guild.id})`);
+                logger.info(`Registering ${totalCommandsWithSubs} commands for guild ${guild.name} (${guild.id}) (guild-specific)`);
             }
             
             try {
@@ -288,7 +288,11 @@ const registeredNames = new Set();
                 throw error;
             }
         } else {
-            logger.info('Skipping global command registration - bot is guild-only');
+            logger.info(`No guild ID provided — registering ${commands.length} commands globally (all servers)`);
+            
+            await client.application.commands.set(commands);
+            
+            logger.info(`Successfully registered ${commands.length} commands globally`);
         }
     } catch (error) {
         logger.error('Error registering commands:', error);
