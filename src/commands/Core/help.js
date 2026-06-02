@@ -181,7 +181,6 @@ export async function createInitialHelpMenu(client) {
     const buttonRow = new ActionRowBuilder().addComponents([
         bugReportButton,
         supportButton,
-        touchpointButton,
     ]);
 
     return {
