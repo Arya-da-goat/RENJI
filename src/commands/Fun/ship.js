@@ -88,7 +88,7 @@ export default {
         "░".repeat(10 - Math.floor(score / 10));
 
       const embed = successEmbed(
-        `💖 Ship Score: ${name1} and ${name2}`,
+        `💖 Shipped: ${name1} and ${name2}`,
         `Compatibility: **${score}%**\n\n\`${progressBar}\`\n\n*${description}*`,
       );
 
