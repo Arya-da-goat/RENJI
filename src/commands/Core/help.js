@@ -158,7 +158,7 @@ export async function createInitialHelpMenu(client) {
     );
 
     embed.setFooter({ 
-        text: "/help|RENJI" 
+        text: "/help | RENJI" 
     });
     embed.setTimestamp();
 
