@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { createEmbed, errorEmbed, successEmbed, infoEmbed, warningEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
-import { handleInteractionError, TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
+import { handleInteractionError, RENJIError, ErrorTypes } from '../../utils/errorHandler.js';
 import { sanitizeInput } from '../../utils/sanitization.js';
 
 import { InteractionHelper } from '../../utils/interactionHelper.js';
@@ -44,7 +44,7 @@ export default {
 
       
       if (!name1Raw || name1Raw.trim().length === 0 || !name2Raw || name2Raw.trim().length === 0) {
-        throw new TitanBotError(
+        throw new RENJIError(
           'Empty names provided to ship command',
           ErrorTypes.USER_INPUT,
           'Please provide valid names for both people!'
@@ -88,7 +88,7 @@ export default {
         "░".repeat(10 - Math.floor(score / 10));
 
       const embed = successEmbed(
-        `💖 Ship Score: ${name1} vs ${name2}`,
+        `💖 Ship Score: ${name1} and ${name2}`,
         `Compatibility: **${score}%**\n\n\`${progressBar}\`\n\n*${description}*`,
       );
 
